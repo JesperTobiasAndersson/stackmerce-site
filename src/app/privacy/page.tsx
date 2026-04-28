@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -9,59 +10,84 @@ const sections = [
   {
     title: "What we collect",
     body:
-      "We collect the information needed to operate our apps and support merchants. This may include store identifiers, installed app context, billing state, app configuration, and usage data required to deliver app features.",
+      "We collect the information reasonably required to operate our apps and support merchants. This may include store identifiers, app installation details, billing status, app configuration, usage information, and support communications.",
   },
   {
     title: "How we use data",
     body:
-      "We use merchant and store data to authenticate installs, operate app features, maintain billing, provide support, improve reliability, and meet legal or platform obligations.",
+      "We use merchant and store data to authenticate app installs, deliver app features, manage billing, provide support, improve reliability and security, and comply with legal or platform requirements.",
   },
   {
     title: "How data is stored",
     body:
-      "We use infrastructure providers and platform services required to operate our apps. Data is stored only to the extent needed to run app functionality, keep sessions valid, and support merchants safely.",
+      "We use infrastructure providers and platform services required to operate our apps. Information is stored only to the extent needed to provide app functionality, maintain secure sessions, troubleshoot issues, and support merchants.",
   },
   {
     title: "Sharing",
     body:
-      "We do not sell merchant data. We may share data with service providers only when needed to host, secure, monitor, bill, or support the app.",
+      "We do not sell merchant data. We may share information with service providers only when required to host, secure, monitor, bill, maintain, or support the app and only for those purposes.",
   },
   {
     title: "Retention",
     body:
-      "We retain data only as long as needed to operate the app, fulfill support or billing obligations, comply with law, and resolve disputes.",
+      "We retain data only for as long as reasonably necessary to operate the app, provide support, meet billing and legal obligations, resolve disputes, and enforce our agreements.",
+  },
+  {
+    title: "Access and deletion",
+    body:
+      "If you uninstall an app or request help with data handling, we may delete or anonymize information when it is no longer needed for legitimate operational, billing, or legal reasons. Certain records may be retained where required by law or platform rules.",
   },
   {
     title: "Contact",
     body:
-      "If you need privacy-related help, use the support contact configured for your StackMerce app listing or your company support channel.",
+      "For privacy-related questions, requests, or support, contact StackMerce through the support details provided in the relevant app listing or merchant support channel.",
   },
 ];
 
 export default function PrivacyPage() {
   return (
     <div className="space-y-6">
-      <section className="rounded-[2rem] border border-[var(--line)] bg-[var(--card-strong)] p-6 shadow-[0_24px_60px_rgba(26,36,31,0.08)] sm:p-8">
-        <span className="inline-flex rounded-full border border-[var(--line)] bg-[var(--surface)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--muted)]">
-          Legal
-        </span>
-        <h1 className="mt-5 font-[family:var(--font-display)] text-4xl font-semibold tracking-[-0.05em] sm:text-5xl">
-          Privacy Policy
-        </h1>
-        <p className="mt-4 max-w-3xl text-base leading-8 text-[var(--muted)] sm:text-lg">
-          This page is the public privacy reference for StackMerce and its app
-          portfolio. You should review the final text with your legal or
-          commercial owner before public launch.
-        </p>
+      <section className="glass-card aurora-border overflow-hidden rounded-[2.2rem] p-6 shadow-[0_28px_80px_rgba(0,0,0,0.28)] sm:p-8">
+        <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
+          <div className="max-w-3xl">
+            <span className="inline-flex rounded-full border border-white/12 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--muted)]">
+              Legal
+            </span>
+            <h1 className="mt-5 font-[family:var(--font-display)] text-4xl font-semibold tracking-[-0.06em] text-white sm:text-5xl">
+              Privacy Policy
+            </h1>
+            <p className="mt-4 max-w-3xl text-base leading-8 text-[var(--muted)] sm:text-lg">
+              This Privacy Policy explains how StackMerce handles merchant and
+              store information across its app portfolio.
+            </p>
+            <p className="mt-3 text-sm font-medium uppercase tracking-[0.18em] text-cyan-200">
+              Effective date: April 28, 2026
+            </p>
+          </div>
+          <div className="rounded-[1.8rem] border border-white/10 bg-white/5 p-4">
+            <Image
+              alt="StackMerce mark"
+              className="h-20 w-20 rounded-[1.4rem]"
+              height={80}
+              src="/brand/stackmerce-mark.svg"
+              width={80}
+            />
+          </div>
+        </div>
+        <div className="mt-8 grid gap-3 sm:grid-cols-3">
+          <PolicySignal title="Public reference" body="This page exists for merchants, reviewers, and compliance checks." />
+          <PolicySignal title="Operational scope" body="It covers the app portfolio and the merchant data needed to run it." />
+          <PolicySignal title="Data principle" body="Information is collected and retained only where needed to operate and support the apps." />
+        </div>
       </section>
 
-      <section className="grid gap-4">
+      <section className="grid gap-4 lg:grid-cols-2">
         {sections.map((section) => (
           <article
-            className="rounded-[1.6rem] border border-[var(--line)] bg-[var(--card)] p-6"
+            className="glass-card aurora-border rounded-[1.8rem] p-6 shadow-[0_18px_50px_rgba(0,0,0,0.22)]"
             key={section.title}
           >
-            <h2 className="font-[family:var(--font-display)] text-2xl font-semibold tracking-[-0.04em]">
+            <h2 className="font-[family:var(--font-display)] text-2xl font-semibold tracking-[-0.04em] text-white">
               {section.title}
             </h2>
             <p className="mt-3 max-w-4xl text-sm leading-8 text-[var(--muted)]">
@@ -70,6 +96,17 @@ export default function PrivacyPage() {
           </article>
         ))}
       </section>
+    </div>
+  );
+}
+
+function PolicySignal({ title, body }: { title: string; body: string }) {
+  return (
+    <div className="rounded-[1.45rem] border border-white/10 bg-white/5 px-4 py-4">
+      <strong className="block text-sm font-semibold uppercase tracking-[0.18em] text-cyan-200">
+        {title}
+      </strong>
+      <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{body}</p>
     </div>
   );
 }

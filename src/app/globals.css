@@ -1,16 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --surface: #f6f2eb;
-  --surface-strong: #fffdf8;
-  --card: #fffaf2;
-  --card-strong: #ffffff;
-  --ink: #1a241f;
-  --muted: #667168;
-  --line: rgba(26, 36, 31, 0.12);
-  --accent: #d96f32;
-  --accent-soft: #ffe2cf;
-  --teal: #2f6f62;
+  --surface: #081023;
+  --surface-strong: #0d1730;
+  --card: rgba(13, 23, 48, 0.82);
+  --card-strong: rgba(16, 29, 59, 0.94);
+  --ink: #f5f8ff;
+  --muted: #9fb0d4;
+  --line: rgba(158, 183, 255, 0.16);
+  --accent: #25cfff;
+  --accent-soft: rgba(37, 207, 255, 0.14);
+  --accent-2: #7d43ff;
+  --panel: rgba(6, 12, 28, 0.72);
 }
 
 * {
@@ -23,9 +24,10 @@ html {
 
 body {
   background:
-    radial-gradient(circle at top left, rgba(217, 111, 50, 0.12), transparent 28%),
-    radial-gradient(circle at top right, rgba(47, 111, 98, 0.14), transparent 24%),
-    linear-gradient(180deg, #f6f2eb 0%, #f9f6f1 100%);
+    radial-gradient(circle at top left, rgba(37, 207, 255, 0.22), transparent 26%),
+    radial-gradient(circle at top right, rgba(125, 67, 255, 0.24), transparent 28%),
+    radial-gradient(circle at 50% 32%, rgba(27, 94, 255, 0.18), transparent 26%),
+    linear-gradient(180deg, #0d1730 0%, #081023 42%, #050b18 100%);
   color: var(--ink);
   font-family: var(--font-display), "Segoe UI", sans-serif;
 }
@@ -36,5 +38,42 @@ a {
 }
 
 ::selection {
-  background: rgba(217, 111, 50, 0.18);
+  background: rgba(37, 207, 255, 0.24);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(circle at center, black, transparent 78%);
+  opacity: 0.22;
+}
+
+.glass-card {
+  backdrop-filter: blur(18px);
+  background: linear-gradient(180deg, rgba(17, 30, 60, 0.88), rgba(8, 16, 35, 0.84));
+}
+
+.aurora-border {
+  position: relative;
+}
+
+.aurora-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(37, 207, 255, 0.55), rgba(125, 67, 255, 0.42), rgba(255, 255, 255, 0.16));
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
