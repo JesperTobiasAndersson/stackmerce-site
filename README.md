@@ -50,3 +50,4 @@ curl -sI https://stackmerce.vercel.app/videos/translate-csv-demo.mp4 | grep -i c
 | --- | --- |
 | `public/videos/discount-demo.mp4` | Discount app listing |
 | `public/videos/translate-csv-demo.mp4` | Translate CSV listing — rebuild it from the Translate CSV repo with `node listing/render-demo-video.mjs` |
+| `public/videos/lowmark-demo.mp4` | Lowmark (Omnibus Price) listing — rebuild it from the Lowmark repo with `node listing/render-demo-video.mjs` |
